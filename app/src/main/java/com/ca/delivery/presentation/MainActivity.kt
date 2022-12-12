@@ -1,4 +1,4 @@
-package com.ca.delivery
+package com.ca.delivery.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

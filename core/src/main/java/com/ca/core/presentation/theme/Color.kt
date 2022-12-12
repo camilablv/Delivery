@@ -30,7 +30,8 @@ val DarkColors = DeliveryColors(
     onSurface = Grey50,
     onError = Grey50,
     focusedTextFieldBorder = Grey900,
-    unfocusedTextFieldBorder = Grey900
+    unfocusedTextFieldBorder = Grey900,
+    disabledButtonBackground = PurpleGrey40
 )
 
 data class DeliveryColors(
@@ -46,7 +47,7 @@ data class DeliveryColors(
     val onError: Color,
     val focusedTextFieldBorder: Color,
     val unfocusedTextFieldBorder: Color,
-//    val focusedInputFieldLabel: Color,
+    val disabledButtonBackground: Color
 )
 
 val LocalDeliveryColors = staticCompositionLocalOf<DeliveryColors> {
