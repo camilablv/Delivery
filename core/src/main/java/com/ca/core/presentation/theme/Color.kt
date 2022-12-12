@@ -12,22 +12,25 @@ val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 val DarkGrey = Color(0xFF121212)
 val Black = Color(0xFF000000)
-val Purple400 = Color(0xFFab47bc)
-val Purple100 = Color(0xFFe1bee7)
-val DarkRed = Color(0xFFB00020)
+val Purple200 = Color(0xFFce93d8)
+val DeepPurple200 = Color(0xFFb39ddb)
+val DarkRed = Color(0xFFCF6679)
 val Grey50 = Color(0xFFfafafa)
+val Grey900 = Color(0xFF212121)
 
 val DarkColors = DeliveryColors(
     background = Black,
-    primary = Purple400,
-    secondary = Purple100,
+    primary = Purple200,
+    secondary = DeepPurple200,
     surface = DarkGrey,
     error = DarkRed,
     onBackground = Grey50,
     onPrimary = Grey50,
     onSecondary = DarkGrey,
     onSurface = Grey50,
-    onError = Grey50
+    onError = Grey50,
+    focusedTextFieldBorder = Grey900,
+    unfocusedTextFieldBorder = Grey900
 )
 
 data class DeliveryColors(
@@ -40,7 +43,10 @@ data class DeliveryColors(
     val onPrimary: Color,
     val onSecondary: Color,
     val onSurface: Color,
-    val onError: Color
+    val onError: Color,
+    val focusedTextFieldBorder: Color,
+    val unfocusedTextFieldBorder: Color,
+//    val focusedInputFieldLabel: Color,
 )
 
 val LocalDeliveryColors = staticCompositionLocalOf<DeliveryColors> {

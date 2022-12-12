@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.dp
 val Shapes = DeliveryShapes(
     button = RoundedCornerShape(50),
     card = AbsoluteRoundedCornerShape(8.dp),
-    textField = RoundedCornerShape(8.dp),
+    textField = RoundedCornerShape(50.dp),
     navigationDrawer = CutCornerShape(0.dp),
 
 )
