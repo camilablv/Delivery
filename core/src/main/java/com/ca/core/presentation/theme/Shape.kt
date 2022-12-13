@@ -25,5 +25,5 @@ data class DeliveryShapes(
 
 
 val LocalDeliveryShapes = staticCompositionLocalOf<DeliveryShapes> {
-    error("No Diary Shapes Provided")
+    error("No DeliveryShapes Provided")
 }

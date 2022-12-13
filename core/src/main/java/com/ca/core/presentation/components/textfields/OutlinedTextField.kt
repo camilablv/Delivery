@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Icon
+import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material.icons.Icons
@@ -33,42 +34,52 @@ fun OutlinedTextField(
 ) {
     var isError by remember(errorMessage) { mutableStateOf(errorMessage != null) }
 
-    androidx.compose.material.OutlinedTextField(
-        value = value.value,
-        onValueChange = {
-            isError = false
-            value.value = it
-        },
+    Column(
         modifier = modifier
-            .fillMaxWidth(1f)
-            .height(60.dp)
-            .semantics { contentDescription = "" }
-            .shadow(0.dp, Theme.shapes.textField),
-        textStyle = Theme.typography.bodyLarge,
-        label = { Text(text = label, color = if (isError) Theme.colors.error else Theme.colors.onSurface) },
-        visualTransformation = visualTransformation,
-        keyboardOptions = KeyboardOptions(
-            keyboardType = keyboardType,
-            imeAction = ImeAction.Next
-        ),
-        colors = TextFieldDefaults.outlinedTextFieldColors(
-            textColor = Theme.colors.onSurface,
-            focusedBorderColor = Theme.colors.surface,
-            unfocusedBorderColor = Theme.colors.unfocusedTextFieldBorder,
-            errorLabelColor = Theme.colors.error,
-            cursorColor = Theme.colors.unfocusedTextFieldBorder,
-            backgroundColor = Theme.colors.surface,
-            errorBorderColor = Theme.colors.error
-        ),
-        isError = isError,
-        singleLine = true,
-        shape = Theme.shapes.textField,
-        trailingIcon = {
-            if (isError)
-                Icon(Icons.Filled.Error, "error_icon", tint = Theme.colors.error)
-        },
-        leadingIcon = leadingIcon
-    )
+    ) {
+        OutlinedTextField(
+            value = value.value,
+            onValueChange = {
+                isError = false
+                value.value = it
+            },
+            modifier = Modifier
+                .fillMaxWidth(1f)
+                .semantics { contentDescription = "" }
+                .shadow(0.dp, Theme.shapes.textField),
+            textStyle = Theme.typography.bodyLarge,
+            label = { Text(text = label, color = if (isError) Theme.colors.error else Theme.colors.onSurface) },
+            visualTransformation = visualTransformation,
+            keyboardOptions = KeyboardOptions(
+                keyboardType = keyboardType,
+                imeAction = ImeAction.Next
+            ),
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                textColor = Theme.colors.onSurface,
+                focusedBorderColor = Theme.colors.surface,
+                unfocusedBorderColor = Theme.colors.unfocusedTextFieldBorder,
+                errorLabelColor = Theme.colors.error,
+                cursorColor = Theme.colors.onSurface,
+                backgroundColor = Theme.colors.surface,
+                errorBorderColor = Theme.colors.error,
+            ),
+            isError = isError,
+            singleLine = true,
+            shape = Theme.shapes.textField,
+            trailingIcon = {
+                if (isError)
+                    Icon(Icons.Filled.Error, "error_icon", tint = Theme.colors.error)
+            },
+            leadingIcon = leadingIcon
+        )
+
+        Text(
+            text = if (isError) errorMessage!! else "",
+            color = Theme.colors.error,
+            style = Theme.typography.bodyLarge,
+            modifier = Modifier
+        )
+    }
 
 
 }
@@ -76,7 +87,7 @@ fun OutlinedTextField(
 @Composable
 @Preview
 fun OutlinedTextFieldPreview() {
-    val value = remember { mutableStateOf("633804050") }
+    val value = remember { mutableStateOf("4455555555") }
 
     DeliveryTheme {
         Box(

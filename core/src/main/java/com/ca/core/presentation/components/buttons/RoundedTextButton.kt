@@ -25,9 +25,9 @@ fun RoundedTextButton(
         ),
         shape = Theme.shapes.button,
         elevation = ButtonDefaults.elevation(
-            defaultElevation = 8.dp,
+            defaultElevation = 4.dp,
             disabledElevation = 0.dp,
-            pressedElevation = 2.dp
+            pressedElevation = 1.dp
         )
     ) {
         Text(text = text)

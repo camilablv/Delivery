@@ -4,25 +4,30 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.ca.auth.presentation.signin.SignInScreen
 import com.ca.core.presentation.theme.DeliveryTheme
+import com.ca.core.presentation.theme.Theme
+import com.ca.delivery.presentation.navigation.Routes
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             DeliveryTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = Theme.colors.background
                 ) {
-                    Greeting("Android")
+                    NavHost(navHostController = rememberNavController())
                 }
             }
         }
@@ -39,5 +44,14 @@ fun Greeting(name: String) {
 fun DefaultPreview() {
     DeliveryTheme {
         Greeting("Android")
+    }
+}
+
+@Composable
+fun NavHost(navHostController: NavHostController) {
+    NavHost(navController = navHostController, startDestination = Routes.SIGNIN.route) {
+        composable(Routes.SIGNIN.route) {
+            SignInScreen()
+        }
     }
 }

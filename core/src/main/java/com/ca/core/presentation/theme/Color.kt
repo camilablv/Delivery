@@ -51,6 +51,6 @@ data class DeliveryColors(
 )
 
 val LocalDeliveryColors = staticCompositionLocalOf<DeliveryColors> {
-    error("No Delivery Colors Provided")
+    error("No DeliveryColors Provided")
 }
 

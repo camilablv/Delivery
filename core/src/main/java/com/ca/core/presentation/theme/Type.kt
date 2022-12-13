@@ -27,5 +27,5 @@ data class DeliveryTypography(
 )
 
 val LocalDeliveryTypography = staticCompositionLocalOf<DeliveryTypography> {
-    error("No Delivery Typography Provided")
+    error("No DeliveryTypography Provided")
 }
