@@ -14,6 +14,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.ca.auth.presentation.signin.SignInScreen
+import com.ca.auth.presentation.signup.SignUpScreen
 import com.ca.core.presentation.theme.DeliveryTheme
 import com.ca.core.presentation.theme.Theme
 import com.ca.delivery.presentation.navigation.Routes
@@ -49,9 +50,12 @@ fun DefaultPreview() {
 
 @Composable
 fun NavHost(navHostController: NavHostController) {
-    NavHost(navController = navHostController, startDestination = Routes.SIGNIN.route) {
+    NavHost(navController = navHostController, startDestination = Routes.SIGNUP.route) {
         composable(Routes.SIGNIN.route) {
             SignInScreen()
+        }
+        composable(Routes.SIGNUP.route) {
+            SignUpScreen()
         }
     }
 }

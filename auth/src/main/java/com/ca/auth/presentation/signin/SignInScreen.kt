@@ -16,6 +16,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import com.ca.auth.presentation.components.PasswordTextField
+import com.ca.auth.presentation.components.PhoneTextField
 import com.ca.core.presentation.components.buttons.RoundedTextButton
 import com.ca.core.presentation.components.textfields.OutlinedTextField
 import com.ca.core.presentation.theme.DeliveryTheme
@@ -99,38 +101,6 @@ fun SignInScreen(
     }
 
 
-}
-
-@Composable
-fun PhoneTextField(
-    value: MutableState<String>,
-    modifier: Modifier,
-    errorMessage: String?
-) {
-    OutlinedTextField(
-        value = value,
-        modifier = modifier,
-        label = "Phone",
-        errorMessage = errorMessage,
-        keyboardType = KeyboardType.Phone,
-        visualTransformation = VisualTransformation.None,
-    )
-}
-
-@Composable
-fun PasswordTextField(
-    value: MutableState<String>,
-    modifier: Modifier,
-    errorMessage: String?
-) {
-    OutlinedTextField(
-        value = value,
-        modifier = modifier,
-        label = "Password",
-        errorMessage = errorMessage,
-        keyboardType = KeyboardType.Password,
-        visualTransformation = PasswordVisualTransformation()
-    )
 }
 
 
