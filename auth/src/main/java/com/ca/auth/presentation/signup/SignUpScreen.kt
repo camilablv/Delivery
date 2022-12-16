@@ -25,7 +25,10 @@ import org.koin.androidx.compose.koinViewModel
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun SignUpScreen(viewModel: SignUpViewModelImpl = koinViewModel()) {
+fun SignUpScreen(
+    viewModel: SignUpViewModelImpl = koinViewModel(),
+    onSignUpClick: (String) -> Unit
+) {
 
     val scope = rememberCoroutineScope()
     val scaffoldState = rememberScaffoldState()
@@ -57,7 +60,8 @@ fun SignUpScreen(viewModel: SignUpViewModelImpl = koinViewModel()) {
                 item {
                     EmailTextField(
                         value = viewModel.email,
-                        modifier = Modifier,
+                        modifier = Modifier
+                            .fillMaxSize(),
                         errorMessage = uiState.phoneNumberError
                     )
                 }
@@ -94,7 +98,7 @@ fun SignUpScreen(viewModel: SignUpViewModelImpl = koinViewModel()) {
                             .fillMaxSize(),
                         enabled = true
                     ) {
-
+                        onSignUpClick(viewModel.phoneNumber.value)
                     }
                 }
             }

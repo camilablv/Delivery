@@ -44,7 +44,7 @@ fun OutlinedTextField(
                 value.value = it
             },
             modifier = Modifier
-                .fillMaxWidth(1f)
+                .fillMaxWidth()
                 .semantics { contentDescription = "" }
                 .shadow(0.dp, Theme.shapes.textField),
             textStyle = Theme.typography.bodyLarge,
