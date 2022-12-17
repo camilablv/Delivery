@@ -1,5 +1,6 @@
 package com.ca.auth.di
 
+import com.ca.auth.data.network.AuthProvider
 import com.ca.auth.data.repository.SignUpRepositoryImpl
 import com.ca.auth.domain.repository.SignUpRepository
 import com.ca.auth.domain.usecase.SignInUseCase
@@ -15,5 +16,6 @@ val authModule = module {
     factory { SignInUseCase() }
     factory { SignUpUseCase(get()) }
     factory<SignUpRepository> { SignUpRepositoryImpl() }
+    factory { AuthProvider() }
 }
 
