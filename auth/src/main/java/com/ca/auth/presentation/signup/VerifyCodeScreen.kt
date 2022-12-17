@@ -1,7 +1,10 @@
 package com.ca.auth.presentation.signup
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.rememberScaffoldState
@@ -55,7 +58,7 @@ fun VerifyCodeScreen(
                         .fillMaxWidth(),
                     enabled = true
                 ) {
-
+                    onVerifyClick(code.value)
                 }
             }
         }

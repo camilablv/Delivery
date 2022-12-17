@@ -27,10 +27,11 @@ import java.util.concurrent.TimeUnit
 class AuthActivity : ComponentActivity() {
 
     val auth = FirebaseAuth.getInstance()
+    lateinit var verificationId: String
 
     private val onVerificationStateChangedCallbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-            signIn(credential)
+
         }
 
         override fun onVerificationFailed(exception: FirebaseException) {
@@ -38,7 +39,7 @@ class AuthActivity : ComponentActivity() {
         }
 
         override fun onCodeSent(id: String, token: PhoneAuthProvider.ForceResendingToken) {
-
+            verificationId = id
         }
     }
 
@@ -84,7 +85,7 @@ class AuthActivity : ComponentActivity() {
     fun NavHost(navHostController: NavHostController) {
         androidx.navigation.compose.NavHost(
             navController = navHostController,
-            startDestination = Routes.VERIFY_CODE.route
+            startDestination = Routes.SIGNUP.route
         ) {
             composable(Routes.SIGNIN.route) {
                 SignInScreen()
@@ -92,11 +93,13 @@ class AuthActivity : ComponentActivity() {
             composable(Routes.SIGNUP.route) {
                 SignUpScreen {
                     verify(it)
+                    navHostController.navigate(Routes.VERIFY_CODE.route)
                 }
             }
             composable(Routes.VERIFY_CODE.route) {
-                VerifyCodeScreen {
-
+                VerifyCodeScreen { code ->
+                    val credential = PhoneAuthProvider.getCredential(verificationId, code)
+                    signIn(credential)
                 }
             }
         }

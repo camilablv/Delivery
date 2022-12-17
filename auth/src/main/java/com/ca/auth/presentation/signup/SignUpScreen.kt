@@ -92,7 +92,7 @@ fun SignUpScreen(
 
                 item {
                     RoundedTextButton(
-                        text = "Sign Up",
+                        text = "Continue",
                         modifier = Modifier
                             .height(50.dp)
                             .fillMaxSize(),
