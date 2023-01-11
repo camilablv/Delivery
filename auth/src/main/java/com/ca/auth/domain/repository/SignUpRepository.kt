@@ -1,5 +1,7 @@
 package com.ca.auth.domain.repository
 
+import com.google.firebase.auth.PhoneAuthOptions
+
 interface SignUpRepository {
-    fun verifyPhoneNumber(phoneNumber: String)
+    fun verifyPhoneNumber(options: PhoneAuthOptions)
 }

@@ -21,13 +21,15 @@ import com.ca.core.presentation.components.buttons.RoundedTextButton
 import com.ca.core.presentation.components.textfields.OutlinedTextField
 import com.ca.core.presentation.theme.Theme
 import com.google.accompanist.insets.imePadding
+import com.google.firebase.auth.PhoneAuthOptions
 import org.koin.androidx.compose.koinViewModel
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun SignUpScreen(
     viewModel: SignUpViewModelImpl = koinViewModel(),
-    onSignUpClick: (String) -> Unit
+    onSignUpClick: (String) -> Unit,
+    navigateToCodeScreen: () -> Unit
 ) {
 
     val scope = rememberCoroutineScope()
@@ -99,6 +101,7 @@ fun SignUpScreen(
                         enabled = true
                     ) {
                         onSignUpClick(viewModel.phoneNumber.value)
+                        navigateToCodeScreen()
                     }
                 }
             }

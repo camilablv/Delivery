@@ -11,11 +11,9 @@ import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import com.ca.auth.presentation.components.VerificationCodeTextField
 import com.ca.core.presentation.components.buttons.RoundedTextButton
-import com.ca.core.presentation.components.textfields.OutlinedTextField
 import com.ca.core.presentation.theme.Theme
 import org.koin.androidx.compose.koinViewModel
 
@@ -23,12 +21,17 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun VerifyCodeScreen(
     viewModel: SignUpViewModelImpl = koinViewModel(),
-    onVerifyClick: (String) -> Unit
+    onVerifyClick: (String) -> Unit,
+    onVerificationCompleted: () -> Unit
 ) {
     val scope = rememberCoroutineScope()
     val scaffoldState = rememberScaffoldState()
     val uiState by viewModel.uiState.collectAsState()
     val code = remember { mutableStateOf("") }
+
+    if (uiState.signUpSuccessful) {
+        onVerificationCompleted()
+    }
 
     Scaffold(
         scaffoldState = scaffoldState
@@ -41,14 +44,11 @@ fun VerifyCodeScreen(
                     .fillMaxSize()
                     .padding(24.dp)
             ) {
-                OutlinedTextField(
+                VerificationCodeTextField(
                     value = code,
                     modifier = Modifier
                         .align(Alignment.Center),
-                    label = "Code",
-                    errorMessage = null,
-                    keyboardType = KeyboardType.Number,
-                    visualTransformation = VisualTransformation.None
+                    6
                 )
 
                 RoundedTextButton(
