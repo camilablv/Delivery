@@ -16,3 +16,4 @@ rootProject.name = "Delivery"
 include ':app'
 include ':core'
 include ':auth'
+include ':order'
